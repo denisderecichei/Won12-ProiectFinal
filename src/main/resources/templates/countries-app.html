@@ -15,12 +15,11 @@
     <div class="container-fluid">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="/countries-app" class="nav-link">Home</a>
             </li>
         </ul>
     </div>
 </nav>
-<h1>Bine ati venit la proiectul final</h1>
 
 <div class="container">
     <br/>
@@ -30,13 +29,14 @@
     </button>
     <br/>
 <!--    tabelul cu tarile-->
-    <table id="countries-table" class="table table-bordered table-hover">
+    <table id="countries-table" class="table table-striped table-bordered table-sm">
         <thead> <!-- table row,this is the header -->
         <td>Name</td>
         <td>Capital</td>
         <td>Population</td>
         <td>Area</td>
         <td>Continent</td>
+        <td>Cities</td>
         </thead>
 <!--        for each pt fiecare tara din lista, si ii afisez informatiile-->
         <tr data-th-each="country:${countries}">
@@ -45,6 +45,11 @@
             <td data-th-text="${country.population}"></td>
             <td data-th-text="${country.area}"></td>
             <td data-th-text="${country.continent}"></td>
+            <td data-th-id="${country.countryId}">
+                <a data-th-href="'/cities/'+${country.countryId}">
+                    <i class="fa fa-building" aria-hidden="true"></i>
+                </a>
+            </td>
         </tr>
     </table>
 </div>

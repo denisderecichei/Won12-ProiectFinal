@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries app</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
+    <script src="/countries.js"></script>
+</head>
+<body>
+<!--bara de navigare - folositoare cand ai mai multe pagini, sau daca ai un single-page app si vrei sa mergi la o alta sectiune-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/countries-app" class="nav-link">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h1>Bine ati venit la proiectul final</h1>
+
+<div class="container">
+    <br/>
+    <!--    butonul pt a adauga o tara => deschide acel modal-->
+    <button class="btn btn-primary" data-bs-target="#add-edit-country"
+            data-bs-toggle="modal" id="add-city-button" type="button">Add city
+    </button>
+    <a href="/countries-app" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Back to Countries</a>
+    <br/>
+    <!--    tabelul cu tarile-->
+    <table id="cities-table" class="table table-striped table-bordered table-sm">
+        <thead> <!-- table row,this is the header -->
+        <td>Name</td>
+        <td>Population</td>
+        </thead>
+        <!--        for each pt fiecare tara din lista, si ii afisez informatiile-->
+        <tr data-th-each="city:${cities}">
+            <td data-th-text="${city.name}"></td>
+            <td data-th-text="${city.population}"></td>
+        </tr>
+    </table>
+</div>

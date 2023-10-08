@@ -1,6 +1,8 @@
 package org.fasttrack.controller;
 
+import org.fasttrack.model.City;
 import org.fasttrack.model.Country;
+import org.fasttrack.service.CityService;
 import org.fasttrack.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +13,12 @@ import java.util.List;
 @RequestMapping("countries")
 public class CountryController {
     private CountryService service;
+    private CityService cityService;
 
     @Autowired
-    public CountryController(CountryService service) {
+    public CountryController(CountryService service, CityService cityService) {
         this.service = service;
+        this.cityService = cityService;
     }
 
     @GetMapping
@@ -43,4 +47,8 @@ public class CountryController {
         return service.removeCountry(countryId);
     }
 
+    @GetMapping("{countryId}/cities")
+    public List<City> findAllCitiesForCountry(@PathVariable int countryId) {
+        return cityService.getAllCitiesByCountry(countryId);
+    }
 }

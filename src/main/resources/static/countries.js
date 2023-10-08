@@ -1,6 +1,5 @@
 $(document).ready(() => {
 
-
     $('#add-button-modal').click(() => {
         //extragem valorile introduse in modal
         const name = $('#modal-name').val();
