@@ -15,12 +15,16 @@
     <div class="container-fluid">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+<!--                pagina de tari - href adauga .html-->
+                <a href="/countries-app" class="nav-link">Countries</a>
+            </li>
+            <li class="nav-item">
+<!--                pagina de orase -->
+                <a href="/cities-app" class="nav-link">All cities</a>
             </li>
         </ul>
     </div>
 </nav>
-<h1>Bine ati venit la proiectul final</h1>
 
 <div class="container">
     <br/>
@@ -32,11 +36,13 @@
 <!--    tabelul cu tarile-->
     <table id="countries-table" class="table table-bordered table-hover">
         <thead> <!-- table row,this is the header -->
-        <td>Name</td>
+        <td>Numele tarii</td>
         <td>Capital</td>
         <td>Population</td>
         <td>Area</td>
         <td>Continent</td>
+        <td>Cities</td>
+        <td>Actions</td>
         </thead>
 <!--        for each pt fiecare tara din lista, si ii afisez informatiile-->
         <tr data-th-each="country:${countries}">
@@ -45,6 +51,18 @@
             <td data-th-text="${country.population}"></td>
             <td data-th-text="${country.area}"></td>
             <td data-th-text="${country.continent}"></td>
+<!--            elementul care te redirecteaza spre pagina de orase specifice -->
+            <td data-th-id="${country.countryId}">
+<!--                link care ne duce la /cities-app/6 sau orice alt id de tara-->
+                <a data-th-href="'/cities-app/' + ${country.countryId}">
+                    <i class="fa fa-building"></i>
+                </a>
+            </td>
+<!--            elementul care contine iconitele pt delete si edit-->
+            <td data-th-id="${country.countryId}">
+                <i class="fa fa-trash delete-icon"></i>
+                <i class="fa fa-pencil-alt edit-icon" data-bs-target="#add-edit-country" data-bs-toggle="modal"></i>
+            </td>
         </tr>
     </table>
 </div>

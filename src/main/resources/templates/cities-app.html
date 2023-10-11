@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries app</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
+    <script src="/cities.js"></script>
+</head>
+<body>
+<!--bara de navigare - folositoare cand ai mai multe pagini, sau daca ai un single-page app si vrei sa mergi la o alta sectiune-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/countries-app" class="nav-link">Countries</a>
+            </li>
+            <li class="nav-item">
+                <a href="/cities-app" class="nav-link">All cities</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <!--    tabelul cu orasele-->
+    <table id="cities-table" class="table table-bordered table-hover">
+        <thead> <!-- table row,this is the header -->
+        <td>Name</td>
+        <td>Population</td>
+        <td>Country</td>
+        </thead>
+        <!--        for each pt fiecare oras din lista, si ii afisez informatiile-->
+        <tr data-th-each="city:${cities}">
+            <td data-th-text="${city.name}"></td>
+            <td data-th-text="${city.population}"></td>
+            <td data-th-text="${city.country.name}"></td>
+        </tr>
+    </table>
+<!--    buton care sa ne redirecteze spre pagina de tari - nu e nevoie de el in proiect deoarece ai navbar-ul deja-->
+<!--    dar l-am pus si pe acesta in caz ca, si ca sa vedeti cum ar arata astfel-->
+    <a href="/countries-app" class="btn btn-success">Back to countries</a>
+</div>
+
+</body>
+</html>
